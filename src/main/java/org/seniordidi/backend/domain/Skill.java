@@ -1,8 +1,9 @@
-package org.seniordidi.demo.domain;
+package org.seniordidi.backend.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.seniordidi.backend.domain.enums.Category;
 
 /**
  * POJO for Skills

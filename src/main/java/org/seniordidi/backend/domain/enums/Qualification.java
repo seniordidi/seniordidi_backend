@@ -1,4 +1,4 @@
-package org.seniordidi.demo.domain;
+package org.seniordidi.backend.domain.enums;
 
 /**
  * Enum for qualification

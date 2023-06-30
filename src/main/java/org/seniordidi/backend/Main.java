@@ -1,9 +1,7 @@
-package org.seniordidi.demo;
+package org.seniordidi.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @SpringBootApplication
 public class Main {
