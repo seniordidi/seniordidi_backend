@@ -66,7 +66,12 @@ public class JobActionController {
     value = "/",
     consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void createJob(@RequestBody Job job){
-        jobService.createJob(job);
+    public Job createJob(@RequestBody Job job){
+        try {
+            return jobService.createJob(job);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

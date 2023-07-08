@@ -1,13 +1,17 @@
 package org.seniordidi.backend.domain.enums;
 
-import org.springframework.core.convert.converter.Converter;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
 
 /**
  * Enum for Role
  */
-public enum Role implements Converter<Role,Integer> {
-    QA(1,"Quality Testing"),
-    SDE(2,"Software Developer");
+
+@Getter
+public enum Role {
+    QA(1, "Quality Testing"),
+    SDE(2, "Software Developer");
 
     final Integer id;
     final String role;
@@ -17,8 +21,9 @@ public enum Role implements Converter<Role,Integer> {
         this.role = role;
     }
 
-    @Override
-    public Integer convert(Role role) {
-        return this.id;
+    @JsonValue
+    public String getValue(){
+        return getRole();
     }
+
 }

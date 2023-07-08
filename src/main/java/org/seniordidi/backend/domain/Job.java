@@ -1,14 +1,14 @@
 package org.seniordidi.backend.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.seniordidi.backend.domain.enums.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Jobs POJO
@@ -16,15 +16,16 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "job_opening")
 public class Job {
 
     @Id
-    @Column(name = "id", length = 20)
+    @Column(name = "id", length = 100)
     private String id;
 
-    @Column(name = "title", length = 50)
+    @Column(name = "title", length = 100)
     private String title;
 
     @Column(name = "description", columnDefinition = "TEXT")
@@ -34,25 +35,28 @@ public class Job {
     private String jobLink;
 
     @Column(name = "role_id")
-    private Integer roleId;
+    private Role role;
 
     @Column(name = "organisation_id")
     private Integer organisationId;
 
     @Column(name = "location_id")
-    private Integer locationId;
+    private Location location;
 
     @Column(name = "category_id")
-    private Integer categoryId;
+    private Category category;
 
     @Column(name = "job_type_id")
-    private Integer jobTypeId;
+    private JobType jobType;
 
     @Column(name = "min_years_of_experience")
     private Integer minYearsOfExperience;
 
     @Column(name = "qualification_id")
-    private Integer qualificationId;
+    private Qualification qualification;
+
+    @Column(name = "expiry_date")
+    private Timestamp expiryDate;
 
     @Column(name = "is_verified")
     private Integer isVerified;
@@ -63,22 +67,9 @@ public class Job {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @Column(name = "expiry_date")
-    private Timestamp expiryDate;
+    @Transient
+    List<Skill> skills;
 
-//    Role role;
-//    Organisation organisation;
-//    Location location;
-//    Category category;
-//    JobType jobType;
-//    Integer minYearsOfExperience;
-//    Qualification qualification;
-//    Compensation compensation;
-//    String jobLink;
-//    List<Skill> skillsRequired;
-//    Boolean isVerified;
-//
-//    LocalDateTime createdAt;
-//    LocalDateTime updatedAt;
-//    LocalDateTime expiryDate;
+    @Transient
+    Compensation compensation;
 }

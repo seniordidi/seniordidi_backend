@@ -1,20 +1,26 @@
 package org.seniordidi.backend.domain.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
+
 /**
  * Enum for Compensation Type
  */
+@Getter
 public enum CompensationType {
-    STIPEND("Stipend"),
-    CTC("CTC");
+    STIPEND(1, "Stipend"),
+    CTC(2, "CTC");
 
-    String compensationType;
+    final Integer id;
+    final String compensationType;
 
-    CompensationType(String compensationType) {
+    CompensationType(Integer id, String compensationType) {
+        this.id = id;
         this.compensationType = compensationType;
     }
 
-    @Override
-    public String toString() {
+    @JsonValue
+    public String getValue() {
         return this.compensationType;
     }
 }

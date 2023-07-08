@@ -1,20 +1,27 @@
 package org.seniordidi.backend.domain.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
+
 /**
  * Enum for Category
  */
+
+@Getter
 public enum Category {
-    SOFTWARE("Software"),
-    MARKETING("Marketing");
+    SOFTWARE(1, "Software"),
+    MARKETING(2, "Marketing");
 
-    String category;
+    final Integer id;
+    final String category;
 
-    Category(String category) {
+    Category(Integer id, String category) {
+        this.id = id;
         this.category = category;
     }
 
-    @Override
-    public String toString() {
-        return this.category;
+    @JsonValue
+    public String getValue() {
+        return this.getCategory();
     }
 }

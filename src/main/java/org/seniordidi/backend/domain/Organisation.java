@@ -11,11 +11,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Organisation {
+    String id;
     String name;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
 
-    public Organisation(String name){
+    public Organisation(String name) {
         this.name = name;
         this.createdAt = LocalDateTime.now();
     }

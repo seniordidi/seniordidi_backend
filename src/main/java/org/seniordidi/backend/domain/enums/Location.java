@@ -1,18 +1,24 @@
 package org.seniordidi.backend.domain.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.Getter;
+
+@Getter
 public enum Location {
-    REMOTE("Remote"),
-    HYDERABAD("Hyderabad"),
-    BANGALORE("Bangalore");
+    REMOTE(1, "Remote"),
+    HYDERABAD(2, "Hyderabad"),
+    BANGALORE(3, "Bangalore");
 
-    String location;
+    final Integer id;
+    final String location;
 
-    Location(String location) {
+    Location(Integer id, String location) {
+        this.id = id;
         this.location = location;
     }
 
-    @Override
-    public String toString() {
+    @JsonValue
+    public String getValue() {
         return this.location;
     }
 }
